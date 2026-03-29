@@ -122,7 +122,8 @@
       //   color: "rgba(255, 255, 255, 0.8)", // Chaotic white
       color: "rgba(128, 128, 128, 0.8)", // Gray
       lineWidth: 2,
-      innerRadius: 40, // Distance from the center
+      innerRadiusMobile: 40, // Distance from the center on mobile
+      innerRadiusDesktop: 140, // Distance from the center on desktop
       barHeightMultiplier: 1.2, // How tall the spikes get
       trailDecay: "rgba(0, 0, 0, 0.3)", // Trail effect (lower opacity = longer trails)
       flameSize: 2, // Max size of the flame particles
@@ -183,7 +184,10 @@
 
       const centerX = canvas.width / 2;
       const centerY = canvas.height / 2;
-      const radius = config.innerRadius;
+      const radius =
+        window.innerWidth <= 768
+          ? config.innerRadiusMobile
+          : config.innerRadiusDesktop;
 
       // High frequencies typically have zeros, so we only use the lower 70% of the frequency data
       const usableBars = Math.floor(dataArray.length * 0.75);
