@@ -18,6 +18,7 @@
   </head>
   <body>
     <main>
+      <audio id="bg-audio" loop src="./assets/audio.mp3"></audio>
       <button id="play-pause-btn" aria-label="Play/Pause">
         <svg
           id="icon-play"
@@ -86,6 +87,11 @@
     }
   </style>
   <script>
+    const audio = document.getElementById("bg-audio");
+    const playPauseBtn = document.getElementById("play-pause-btn");
+    const iconPlay = document.getElementById("icon-play");
+    const iconPause = document.getElementById("icon-pause");
+
     playPauseBtn.addEventListener("click", () => {
       if (audio.paused) {
         audio.play();
